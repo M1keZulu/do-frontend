@@ -1,43 +1,59 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import axios from 'axios';
-import 'bootstrap/dist/css/bootstrap.min.css'; 
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
-  const [number, setNumber] = useState('') 
+  const [number, setNumber] = useState('')
+  const [result, setResult] = useState('')
 
-  //get api route from .env file
-  const API_ROUTE = process.env.FASTAPI_APP_API_ROUTE
+  const apiUrl = process.env.REACT_APP_API_BASE_URL;
 
-  function sample(result) {
-    document.getElementById("text_a").innerHTML = result
-  }
-
-  // Post a todo
   const squareHandler = () => {
-    axios.post(`${API_ROUTE}/square`, {"number":number})
+    axios.post('http://52.226.50.253:8000/square', { "number": number })
       .then(res => {
-        sample(res.data)
+        setResult(res.data)
       })
   };
 
   return (
-    <div className="App list-group-item  justify-content-center align-items-center mx-auto" style={{"width":"400px", "backgroundColor":"white", "marginTop":"15px"}} >
-      <h1 className="card text-white bg-primary mb-1" styleName="max-width: 20rem;">Square a Number</h1>
-      <h6 className="card text-white bg-primary mb-3">Emre Ozan - FASTAPI - React - Canary Update Testing</h6>
-      <div className="card-body">
-        <h5 className="card text-white bg-dark mb-3">Type Your Number</h5>
-        <span className="card-text"> 
-          <input className="mb-2 form-control titleIn" onChange={event => setNumber(event.target.value)} placeholder='Number'/>
-          <button className="btn btn-outline-primary mx-2 mb-3" style={{'borderRadius':'50px',"font-weight":"bold"}}  onClick={squareHandler}>Square</button>
-        </span>
-        <h5 className="card text-white bg-dark mb-3">Your Result</h5>
-        <div>
-          <h1 id="text_a"></h1>
+    <div className="App">
+      <div className="container mt-5">
+        <div className="row justify-content-center">
+          <div className="col-md-6">
+            <div className="card">
+              <div className="card-header bg-primary text-white">
+                <h1 className="text-center">Square a Number</h1>
+                <h6 className="text-center">DevOps Project - Canary Update Testing</h6>
+              </div>
+              <div className="card-body">
+                <div className="form-group">
+                  <label htmlFor="numberInput" className="text-dark">Type Your Number</label>
+                  <input
+                    id="numberInput"
+                    type="number"
+                    className="form-control"
+                    onChange={event => setNumber(event.target.value)}
+                    placeholder='Number'
+                  />
+                </div>
+                <div className="text-center mt-3">
+                  <button className="btn btn-outline-primary" style={{ 'borderRadius': '50px', "fontWeight": "bold" }} onClick={squareHandler}>Square</button>
+                </div>
+                <hr />
+                <div className="text-center">
+                  <h5 className="text-dark">Your Result</h5>
+                  <h1>{result}</h1>
+                </div>
+              </div>
+              <div className="card-footer bg-warning text-center py-2">
+                <small>DevOps - 2023, All rights reserved &copy;</small>
+              </div>
+            </div>
+          </div>
         </div>
-        </div>
-      <h6 className="card text-dark bg-warning py-1 mb-0" >2021, All rights reserved &copy;</h6>
+      </div>
     </div>
   );
 }
