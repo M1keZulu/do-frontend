@@ -25,7 +25,7 @@ function App() {
   return (
     <div className="App list-group-item  justify-content-center align-items-center mx-auto" style={{"width":"400px", "backgroundColor":"white", "marginTop":"15px"}} >
       <h1 className="card text-white bg-primary mb-1" styleName="max-width: 20rem;">Square a Number</h1>
-      <h6 className="card text-white bg-primary mb-3">Emre Ozan - FASTAPI - React</h6>
+      <h6 className="card text-white bg-primary mb-3">Emre Ozan - FASTAPI - React - Canary Update Testing</h6>
       <div className="card-body">
         <h5 className="card text-white bg-dark mb-3">Type Your Number</h5>
         <span className="card-text"> 
