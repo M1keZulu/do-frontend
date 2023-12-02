@@ -16,4 +16,4 @@ spec:
     spec:
       containers:
         - name: app
-          image: 'doreg.azurcr.io/frontend/canary:latest'
+          image: 'doreg.azurecr.io/frontend/canary:latest'
