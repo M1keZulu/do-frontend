@@ -5,15 +5,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
-  const [number, setNumber] = useState('')
+  const [number1, setNumber1] = useState('')
+  const [number2, setNumber2] = useState('')
+  const [operation, setOperation] = useState('+')
   const [result, setResult] = useState('')
 
-  const apiUrl = process.env.REACT_APP_API_BASE_URL;
-
-  const squareHandler = () => {
-    axios.post('http://4.157.206.252:8000/square', { "number": number })
+  const calculateHandler = () => {
+    axios.post('http://4.157.206.252:8000/calculate', { "number1": number1, "number2": number2, "operation": operation })
       .then(res => {
-        setResult(res.data)
+        setResult(res.data['result'])
       })
   };
 
@@ -22,33 +22,36 @@ function App() {
       <div className="container mt-5">
         <div className="row justify-content-center">
           <div className="col-md-6">
-            <div className="card">
-              <div className="card-header bg-primary text-white">
-                <h1 className="text-center">Square a Number</h1>
-                <h6 className="text-center">DevOps Project - Release Update Testing v3.0</h6>
+            <div className="card p-4">
+              <h1 className="text-center mb-4">Math Operations</h1>
+              <div className="form-group">
+                <input
+                  type="number"
+                  className="form-control mb-2"
+                  onChange={event => setNumber1(event.target.value)}
+                  placeholder='Number 1'
+                />
+                <input
+                  type="number"
+                  className="form-control mb-2"
+                  onChange={event => setNumber2(event.target.value)}
+                  placeholder='Number 2'
+                />
+                <select
+                  className="form-control mb-2"
+                  onChange={event => setOperation(event.target.value)}
+                >
+                  <option value="+">Addition (+)</option>
+                  <option value="-">Subtraction (-)</option>
+                  <option value="*">Multiplication (*)</option>
+                  <option value="/">Division (/)</option>
+                </select>
+                <button className="btn btn-primary btn-block" onClick={calculateHandler}>Calculate</button>
               </div>
-              <div className="card-body">
-                <div className="form-group">
-                  <label htmlFor="numberInput" className="text-dark">Type Your Number</label>
-                  <input
-                    id="numberInput"
-                    type="number"
-                    className="form-control"
-                    onChange={event => setNumber(event.target.value)}
-                    placeholder='Number'
-                  />
-                </div>
-                <div className="text-center mt-3">
-                  <button className="btn btn-outline-primary" style={{ 'borderRadius': '50px', "fontWeight": "bold" }} onClick={squareHandler}>Square</button>
-                </div>
-                <hr />
-                <div className="text-center">
-                  <h5 className="text-dark">Your Result</h5>
-                  <h1>{result}</h1>
-                </div>
-              </div>
-              <div className="card-footer bg-warning text-center py-2">
-                <small>DevOps - 2023, All rights reserved &copy;</small>
+              <hr />
+              <div className="text-center">
+                <h4>Result:</h4>
+                <h2>{result}</h2>
               </div>
             </div>
           </div>
