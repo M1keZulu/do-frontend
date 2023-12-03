@@ -25,7 +25,7 @@ function App() {
             <div className="card">
               <div className="card-header bg-primary text-white">
                 <h1 className="text-center">Square a Number</h1>
-                <h6 className="text-center">DevOps Project - Release Update Testing v2.0</h6>
+                <h6 className="text-center">DevOps Project - Release Update Testing v3.0</h6>
               </div>
               <div className="card-body">
                 <div className="form-group">
