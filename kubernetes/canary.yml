@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend-canary
+  name: frontend-release
 spec:
-  replicas: 2
+  replicas: 3
   selector:
     matchLabels:
       app: frontend
-      track: canary
+      track: release
   template:
     metadata:
       labels:
         app: frontend
-        track: canary
+        track: release
     spec:
       containers:
         - name: app
-          image: 'doreg.azurecr.io/frontend/canary:latest'
+          image: 'doreg.azurecr.io/frontend/release:latest'
