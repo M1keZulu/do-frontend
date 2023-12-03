@@ -1,17 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend
+  name: frontend-release
 spec:
-  replicas: 10
+  replicas: 5
   selector:
     matchLabels:
       app: frontend
+      track: release
   template:
     metadata:
       labels:
         app: frontend
+        track: release
     spec:
       containers:
         - name: app
-          image: 'doreg.azurcr.io/frontend/production:latest'
+          image: 'doreg.azurecr.io/frontend/release:latest'
