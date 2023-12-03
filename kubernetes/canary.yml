@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-canary
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend
+      track: canary
+  template:
+    metadata:
+      labels:
+        app: frontend
+        track: canary
+    spec:
+      containers:
+        - name: app
+          image: 'doreg.azurecr.io/frontend/canary:latest'
