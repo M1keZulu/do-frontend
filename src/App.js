@@ -11,7 +11,7 @@ function App() {
   const apiUrl = process.env.REACT_APP_API_BASE_URL;
 
   const squareHandler = () => {
-    axios.post('http://52.226.50.253:8000/square', { "number": number })
+    axios.post('http://4.157.206.252:8000/square', { "number": number })
       .then(res => {
         setResult(res.data)
       })
