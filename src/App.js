@@ -23,7 +23,7 @@ function App() {
         <div className="row justify-content-center">
           <div className="col-md-6">
             <div className="card p-4">
-              <h1 className="text-center mb-4">Math Operations</h1>
+              <h1 className="text-center mb-4">Math Operations - v1.0</h1>
               <div className="form-group">
                 <input
                   type="number"
