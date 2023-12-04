@@ -10,7 +10,6 @@ function App() {
   const [operation, setOperation] = useState('+')
   const [result, setResult] = useState('')
 
-
   const [featuresFlag, setFeaturesFlag] = useState(false)
 
   useEffect(() => {
@@ -44,6 +43,7 @@ function App() {
                     onChange={event => setNumber1(event.target.value)}
                   /> : null
                 }
+
                 {
                   featuresFlag && featuresFlag['input'] ? <input
                     type="text"
